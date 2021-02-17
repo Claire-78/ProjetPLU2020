@@ -12,27 +12,31 @@ package org.centrale.projet.objet;
 public class Parcelle {
     private int numero;
     private String proprietaire;
+    private Polygone forme;
     private float surface;
     private int pConstructible;
     
-    Parcelle(int num, String proprio, float s, int pConst){
+    Parcelle(int num, String proprio, Polygone f, int pConst){
         numero = num;
         proprietaire = proprio;
-        surface = s;
+        forme = f;
+        surface = f.getSurface();
         pConstructible = pConst;
     }
     
     Parcelle(Parcelle p){
         numero = p.getNumero();
         proprietaire = p.getProprietaire();
-        surface = p.getSurface();
+        forme = p.forme;
+        surface = forme.getSurface();
         pConstructible = p.getpConstructible();
     }
     
     Parcelle(){
         numero = 0;
         proprietaire = "";
-        surface = 0;
+        forme = new Polygone();
+        surface = forme.getSurface();
         pConstructible = 0;
     }
     
@@ -44,6 +48,10 @@ public class Parcelle {
         return proprietaire;
     }
     
+    public Polygone getForme(){
+        return forme;
+    }
+    
     public float getSurface(){
         return surface;
     }
@@ -51,6 +59,11 @@ public class Parcelle {
     public int getpConstructible(){
         return pConstructible;
     }
+    
+    /*
+    public String getType(){
+        return this.getClass().GetSimpleName();
+    }*/
     
     public void setNumero(int num){
         numero = num;
@@ -60,8 +73,9 @@ public class Parcelle {
         proprietaire = proprio;
     }
     
-    public void setSurface(float s){
-        surface = s;
+    public void setForme(Polygone poly){
+        forme = poly;
+        surface = forme.getSurface();
     }
     
     public void setpConstructible(int pConst){
@@ -73,6 +87,6 @@ public class Parcelle {
     }
     
     public String toString(){
-        return ("Parcelle numero " + numero + " appartenant à " + proprietaire + " avec une surface de " + surface + " dont " + pConstructible + "% constructibles.");
+        return ("Parcelle numero " + numero + " appartenant à " + proprietaire + " avec une surface de " + surface + " dont " + pConstructible + "% constructibles, et dont la forme est :\n"+ forme.toString());
     }
 }

@@ -49,7 +49,8 @@ public class Polygone {
         Point2D pi1;
         for (int i=0;i<sommets.size();i++){
             pi = sommets.get(i);
-            pi1 = sommets.get(i%sommets.size());
+            pi1 = sommets.get((i+1)%sommets.size());
+            
             surface += (float) (pi.getX()*pi1.getY() - pi1.getX()*pi.getY());
         }
         return (surface/2.0f);

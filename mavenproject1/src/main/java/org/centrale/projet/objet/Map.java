@@ -17,7 +17,7 @@ public class Map {
         parcelles = new Parcelle[4];
     }
     
-    public void creeMapAlea(){
+    public void creeMapAlea(Polygone poly1,Polygone poly2, Polygone poly3, Polygone poly4){
         Random generateur = new Random();
         parcelles[0] = new Parcelle();
         parcelles[1] = new Parcelle();
@@ -54,24 +54,11 @@ public class Map {
             parcelles[i].setProprietaire(nom);
         }
         
-        //Surfaces
-        num = generateur.nextInt(100);
-        parcelles[0].setSurface((float)num);
-        
-        while (num == (int)parcelles[0].getSurface()) {
-            num = generateur.nextInt(100);
-        }
-        parcelles[1].setSurface((float)num);
-        
-        while ((num == (int)parcelles[0].getSurface())||(num == (int)parcelles[1].getSurface())) {
-            num = generateur.nextInt(100);
-        }
-        parcelles[2].setSurface((float)num);
-        
-        while ((num == (int)parcelles[0].getSurface())||(num == (int)parcelles[1].getSurface())||(num == (int)parcelles[2].getSurface())) {
-            num = generateur.nextInt(100);
-        }
-        parcelles[3].setSurface((float)num);
+        //Formes
+        parcelles[0].setForme(poly1);
+        parcelles[1].setForme(poly2);
+        parcelles[2].setForme(poly3);
+        parcelles[3].setForme(poly4);
         
         //pConstructible
         for (int i = 0;i<4;i++){
@@ -98,8 +85,7 @@ public class Map {
     public String toString(){
         String total = "";
         for (int i = 0;i<4;i++){
-            total += parcelles[i].toString();
-            total += "\n";
+            total += parcelles[i].toString() +"\n";
         }
         return total;
     }
@@ -107,5 +93,4 @@ public class Map {
     public void affiche(){
         System.out.println(toString());
     }
-    
 }

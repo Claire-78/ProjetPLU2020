@@ -22,7 +22,10 @@ public class Polygone {
     }
     
     Polygone(Polygone p){
-        sommets = p.getSommets();
+        sommets = new ArrayList<Point2D>();
+        for (Point2D point :p.getSommets()){
+            sommets.add(new Point2D(point));
+        }
     }
     
     public List<Point2D> getSommets(){

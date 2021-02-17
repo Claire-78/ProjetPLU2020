@@ -74,7 +74,7 @@ public class Parcelle {
         String s = "Parcelle numero " + numero + "\n";
         s += "  Type : " + getType() + "\n";
         s += "  Propriétaire : " + proprietaire + "\n";
-        s += "  Forme" + forme + "\n";
+        s += "  Forme : " + forme + "\n";
         s += "  Surface : " + surface + "m²\n";
         return (s);
     }

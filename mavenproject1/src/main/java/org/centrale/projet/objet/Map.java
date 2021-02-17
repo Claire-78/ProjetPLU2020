@@ -64,18 +64,21 @@ public class Map {
             //ZAU
         num = generateur.nextInt(100);
         ((ZAU)parcelles[0]).setpConstructible(num);
+        
             //ZU
         num = generateur.nextInt(100);
         ((ZU)parcelles[1]).setpConstructible(num);
-        num = generateur.nextInt((int)((ZAU)parcelles[0]).surfaceConstructible());
+        num = generateur.nextInt((int)((ZAU)parcelles[1]).surfaceConstructible());
+        System.out.println(((ZAU)parcelles[0]).surfaceConstructible());
         ((ZU)parcelles[1]).setSurfaceConstruite(num);
+        
             //ZN : rien à faire de plus
             //ZA
         String culture = "";
         for (int j = 0; j < 6; j++) {
             culture += (char) (generateur.nextInt(26) + 97);
         }
-        parcelles[3].setProprietaire(culture);
+        ((ZA)parcelles[3]).setCulture(culture);
     }
     
     public float getSurface(){

@@ -38,11 +38,11 @@ public class ZU extends ZAU {
     }
 
     public float surfaceConstructible() {
-        return (((ZAU) this).surfaceConstructible() - surfaceConstruite);
+        return (super.surfaceConstructible() - surfaceConstruite);
     }
 
     public String toString() {
-        String s = ((ZAU) this).toString();
+        String s = super.toString();
         s += "  Surface construite : " + surfaceConstruite + "\n";
         s += "  Surface constructible restante : " + surfaceConstructible() + "\n";
         return s;

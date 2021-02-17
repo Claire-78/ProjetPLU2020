@@ -22,4 +22,8 @@ public class ZN extends Parcelle {
         setProprietaire(p.getProprietaire());
         setForme(p.getForme());
     }
+    
+    public String toString(){
+        return super.toString();
+    }
 }

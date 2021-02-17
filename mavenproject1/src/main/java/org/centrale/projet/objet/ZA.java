@@ -36,7 +36,7 @@ public class ZA extends ZN {
     }
 
     public String toString() {
-        String s = ((Parcelle) this).toString();
+        String s = super.toString();
         s += "  Type de culture : " + culture + "\n";
         return s;
     }

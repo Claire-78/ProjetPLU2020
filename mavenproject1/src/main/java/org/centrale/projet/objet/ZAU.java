@@ -13,11 +13,8 @@ public class ZAU extends Parcelle {
 
     private int pConstructible;
 
-    ZAU(){
-        setNumero(0);
-        setProprietaire(new String());
-        setForme(new Polygone());
-        pConstructible = 0;
+    public ZAU(){
+        super();
     }
     
     ZAU(Parcelle p){
@@ -36,12 +33,13 @@ public class ZAU extends Parcelle {
     }
 
     public float surfaceConstructible() {
-        return ((float) pConstructible * this.getSurface());
+        return ((float) pConstructible * this.getSurface()/100f);
     }
 
+    @Override
     public String toString() {
-        String s = ((Parcelle) this).toString();
-        s += "  % constructible : " + pConstructible + "\n";
+        var s = super.toString();
+        s += "  % constructible : " + pConstructible + "%\n";
         return s;
     }
 }

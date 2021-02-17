@@ -13,6 +13,20 @@ public class ZA extends ZN {
 
     private String culture;
 
+    ZA(){
+        setNumero(0);
+        setProprietaire(new String());
+        setForme(new Polygone());
+        culture = new String();
+    }
+    
+    ZA(Parcelle p, String cult){
+        setNumero(p.getNumero());
+        setProprietaire(p.getProprietaire());
+        setForme(p.getForme());
+        culture = cult;
+    }
+    
     public String getCulture() {
         return culture;
     }
@@ -23,7 +37,7 @@ public class ZA extends ZN {
 
     public String toString() {
         String s = ((Parcelle) this).toString();
-        s += "Type de culture : " + culture + "\n";
+        s += "  Type de culture : " + culture + "\n";
         return s;
     }
 }

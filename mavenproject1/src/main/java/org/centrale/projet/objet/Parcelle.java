@@ -26,7 +26,7 @@ public class Parcelle {
     Parcelle(Parcelle p) {
         numero = p.getNumero();
         proprietaire = p.getProprietaire();
-        forme = p.forme;
+        forme = p.getForme();
         surface = forme.getSurface();
     }
 
@@ -72,10 +72,10 @@ public class Parcelle {
 
     public String toString() {
         String s = "Parcelle numero " + numero + "\n";
-        s += "   Type : " + getType() + "\n";
-        s += "Propriétaire : " + proprietaire + "\n";
-        s += "Forme" + forme + "\n";
-        s += "Surface : " + surface + "m²\n";
+        s += "  Type : " + getType() + "\n";
+        s += "  Propriétaire : " + proprietaire + "\n";
+        s += "  Forme" + forme + "\n";
+        s += "  Surface : " + surface + "m²\n";
         return (s);
     }
 }

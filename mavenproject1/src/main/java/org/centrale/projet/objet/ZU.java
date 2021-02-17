@@ -13,6 +13,22 @@ public class ZU extends ZAU {
 
     private float surfaceConstruite;
 
+    ZU(){
+        setNumero(0);
+        setProprietaire(new String());
+        setForme(new Polygone());
+        setpConstructible(0);
+        surfaceConstruite = 0;
+    }
+    
+    ZU(Parcelle p, int pConst, float surfConstruite){
+        setNumero(p.getNumero());
+        setProprietaire(p.getProprietaire());
+        setForme(p.getForme());
+        setpConstructible(pConst);
+        surfaceConstruite = surfConstruite;
+    }
+    
     public float getSurfaceConstruite() {
         return surfaceConstruite;
     }
@@ -27,8 +43,8 @@ public class ZU extends ZAU {
 
     public String toString() {
         String s = ((ZAU) this).toString();
-        s += "Surface construite : " + surfaceConstruite + "\n";
-        s += "Surface constructible restante : " + surfaceConstructible() + "\n";
+        s += "  Surface construite : " + surfaceConstruite + "\n";
+        s += "  Surface constructible restante : " + surfaceConstructible() + "\n";
         return s;
     }
 }

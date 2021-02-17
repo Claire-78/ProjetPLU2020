@@ -19,10 +19,10 @@ public class Map {
     
     public void creeMapAlea(Polygone poly1,Polygone poly2, Polygone poly3, Polygone poly4){
         Random generateur = new Random();
-        parcelles[0] = new Parcelle();
-        parcelles[1] = new Parcelle();
-        parcelles[2] = new Parcelle();
-        parcelles[3] = new Parcelle();
+        parcelles[0] = new ZAU();
+        parcelles[1] = new ZU();
+        parcelles[2] = new ZN();
+        parcelles[3] = new ZA();
         
         //Numeros
         int num;
@@ -60,10 +60,22 @@ public class Map {
         parcelles[2].setForme(poly3);
         parcelles[3].setForme(poly4);
         
-        //pConstructible
-        for (int i = 0;i<4;i++){
-            parcelles[i].setpConstructible(generateur.nextInt(101));
+        //Différentiation des types
+            //ZAU
+        num = generateur.nextInt(100);
+        ((ZAU)parcelles[0]).setpConstructible(num);
+            //ZU
+        num = generateur.nextInt(100);
+        ((ZU)parcelles[1]).setpConstructible(num);
+        num = generateur.nextInt((int)((ZAU)parcelles[0]).surfaceConstructible());
+        ((ZU)parcelles[1]).setSurfaceConstruite(num);
+            //ZN : rien à faire de plus
+            //ZA
+        String culture = "";
+        for (int j = 0; j < 6; j++) {
+            culture += (char) (generateur.nextInt(26) + 97);
         }
+        parcelles[3].setProprietaire(culture);
     }
     
     public float getSurface(){
@@ -74,13 +86,14 @@ public class Map {
         return total;
     }
     
+    /*
     public float getSurfaceConstructible(){
         float total = 0;
         for (int i = 0;i<4;i++){
             total += parcelles[i].surfaceConstructible();
         }
         return total;
-    }
+    }*/
     
     public String toString(){
         String total = "";

@@ -13,6 +13,20 @@ public class ZAU extends Parcelle {
 
     private int pConstructible;
 
+    ZAU(){
+        setNumero(0);
+        setProprietaire(new String());
+        setForme(new Polygone());
+        pConstructible = 0;
+    }
+    
+    ZAU(Parcelle p){
+        setNumero(p.getNumero());
+        setProprietaire(p.getProprietaire());
+        setForme(p.getForme());
+        pConstructible = 0;
+    }
+    
     public int getpConstructible() {
         return pConstructible;
     }
@@ -27,7 +41,7 @@ public class ZAU extends Parcelle {
 
     public String toString() {
         String s = ((Parcelle) this).toString();
-        s += "% constructible : " + pConstructible + "\n";
+        s += "  % constructible : " + pConstructible + "\n";
         return s;
     }
 }

@@ -10,5 +10,16 @@ package org.centrale.projet.objet;
  * @author clair
  */
 public class ZN extends Parcelle {
-
+    
+    ZN(){
+        setNumero(0);
+        setProprietaire(new String());
+        setForme(new Polygone());
+    }
+    
+    ZN(Parcelle p){
+        setNumero(p.getNumero());
+        setProprietaire(p.getProprietaire());
+        setForme(p.getForme());
+    }
 }

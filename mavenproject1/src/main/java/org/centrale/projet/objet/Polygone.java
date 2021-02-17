@@ -61,10 +61,10 @@ public class Polygone {
     
     public String toString(){
         String affichage = new String();
-        affichage += "Polygone à " + sommets.size() + " points :\n";
+        affichage += "Polygone à " + sommets.size() + " points :";
         
         for (Point2D sommet : sommets) {
-            affichage += sommet.toString() + "\n";
+            affichage += sommet.toString() + " ";
         }
         return affichage;
     }

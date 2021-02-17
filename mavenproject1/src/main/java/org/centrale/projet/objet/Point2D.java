@@ -10,8 +10,8 @@ package org.centrale.projet.objet;
  * @author clair
  */
 public class Point2D {
-    int x;
-    int y;
+    private int x;
+    private int y;
     
     Point2D(){
         x = 0;
@@ -24,8 +24,8 @@ public class Point2D {
     }
     
     Point2D(Point2D p){
-        x = p.x;
-        y = p.y;
+        x = p.getX();
+        y = p.getY();
     }
     
     public int getX(){

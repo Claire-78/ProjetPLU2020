@@ -10,10 +10,10 @@ package org.centrale.projet.objet;
  * @author clair
  */
 public class Parcelle {
-    int numero;
-    String proprietaire;
-    float surface;
-    int pConstructible;
+    private int numero;
+    private String proprietaire;
+    private float surface;
+    private int pConstructible;
     
     Parcelle(int num, String proprio, float s, int pConst){
         numero = num;
@@ -23,10 +23,10 @@ public class Parcelle {
     }
     
     Parcelle(Parcelle p){
-        numero = p.numero;
-        proprietaire = p.proprietaire;
-        surface = p.surface;
-        pConstructible = p.pConstructible;
+        numero = p.getNumero();
+        proprietaire = p.getProprietaire();
+        surface = p.getSurface();
+        pConstructible = p.getpConstructible();
     }
     
     Parcelle(){

@@ -19,6 +19,10 @@ public class Map {
     
     public void creeMapAlea(){
         Random generateur = new Random();
+        parcelles[0] = new Parcelle();
+        parcelles[1] = new Parcelle();
+        parcelles[2] = new Parcelle();
+        parcelles[3] = new Parcelle();
         
         //Numeros
         int num;
@@ -41,9 +45,12 @@ public class Map {
         parcelles[3].setNumero(num);
         
         //Propriétaires
-        String nom = "";
+        String nom;
         for (int i = 0;i<4;i++){
-            nom +=(char)(generateur.nextInt(26) + 97);
+            nom = "";
+            for (int j = 0; j < 6; j++) {
+                nom += (char) (generateur.nextInt(26) + 97);
+            }
             parcelles[i].setProprietaire(nom);
         }
         
@@ -51,17 +58,17 @@ public class Map {
         num = generateur.nextInt(100);
         parcelles[0].setSurface((float)num);
         
-        while (num == (int)parcelles[0].getNumero()) {
+        while (num == (int)parcelles[0].getSurface()) {
             num = generateur.nextInt(100);
         }
         parcelles[1].setSurface((float)num);
         
-        while ((num == (int)parcelles[0].getNumero())||(num == (int)parcelles[1].getNumero())) {
+        while ((num == (int)parcelles[0].getSurface())||(num == (int)parcelles[1].getSurface())) {
             num = generateur.nextInt(100);
         }
         parcelles[2].setSurface((float)num);
         
-        while ((num == (int)parcelles[0].getNumero())||(num == (int)parcelles[1].getNumero())||(num == (int)parcelles[2].getNumero())) {
+        while ((num == (int)parcelles[0].getSurface())||(num == (int)parcelles[1].getSurface())||(num == (int)parcelles[2].getSurface())) {
             num = generateur.nextInt(100);
         }
         parcelles[3].setSurface((float)num);

@@ -68,9 +68,22 @@ public class Map {
             //ZU
         num = generateur.nextInt(100);
         ((ZU)parcelles[1]).setpConstructible(num);
-        num = generateur.nextInt((int)((ZAU)parcelles[1]).surfaceConstructible());
-        System.out.println(((ZAU)parcelles[0]).surfaceConstructible());
-        ((ZU)parcelles[1]).setSurfaceConstruite(num);
+        /*
+        int surfaceConstruct = (int) (((ZU) parcelles[1]).surfaceConstructible());
+        System.out.println(surfaceConstruct+"\n");
+        if (surfaceConstruct > 0) {
+            num = generateur.nextInt(surfaceConstruct);
+            ((ZU) parcelles[1]).setSurfaceConstruite(num);
+        } else {
+            ((ZU) parcelles[1]).setSurfaceConstruite(0);
+        }*/
+        float surfaceConstruct = ((ZU) parcelles[1]).surfaceConstructible();
+        if (surfaceConstruct > 0){
+            num = generateur.nextInt((int)(surfaceConstruct*100f));
+            ((ZU) parcelles[1]).setSurfaceConstruite((float)num/100f);
+        } else {
+            ((ZU) parcelles[1]).setSurfaceConstruite(0);
+        }
         
             //ZN : rien à faire de plus
             //ZA

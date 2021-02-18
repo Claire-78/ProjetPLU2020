@@ -12,15 +12,15 @@ package org.centrale.projet.objet;
 public class ZN extends Parcelle {
     
     ZN(){
-        setNumero(0);
-        setProprietaire(new String());
-        setForme(new Polygone());
+        super();
     }
     
-    ZN(Parcelle p){
-        setNumero(p.getNumero());
-        setProprietaire(p.getProprietaire());
-        setForme(p.getForme());
+    ZN(int num, String proprio, Polygone f) {
+        super(num,proprio,f);
+    }
+    
+    ZN(ZN p){
+        super(p);
     }
     
     public String toString(){

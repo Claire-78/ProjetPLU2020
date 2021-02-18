@@ -15,13 +15,17 @@ public class ZAU extends Parcelle {
 
     public ZAU(){
         super();
+        pConstructible = 0;
     }
     
-    ZAU(Parcelle p){
-        setNumero(p.getNumero());
-        setProprietaire(p.getProprietaire());
-        setForme(p.getForme());
-        pConstructible = 0;
+    ZAU(int num, String proprio, Polygone f,int pConst){
+        super(num,proprio,f);
+        pConstructible = pConst;
+    }
+    
+    ZAU(ZAU p){
+        super(p);
+        pConstructible = p.getpConstructible();
     }
     
     public int getpConstructible() {

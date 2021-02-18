@@ -14,17 +14,18 @@ public class ZA extends ZN {
     private String culture;
 
     ZA(){
-        setNumero(0);
-        setProprietaire(new String());
-        setForme(new Polygone());
+        super();
         culture = new String();
     }
-    
-    ZA(Parcelle p, String cult){
-        setNumero(p.getNumero());
-        setProprietaire(p.getProprietaire());
-        setForme(p.getForme());
+        
+    ZA(int num, String proprio, Polygone f, String cult){
+        super(num,proprio,f);
         culture = cult;
+    }
+    
+    ZA(ZA p){
+        super(p);
+        culture = p.getCulture();
     }
     
     public String getCulture() {

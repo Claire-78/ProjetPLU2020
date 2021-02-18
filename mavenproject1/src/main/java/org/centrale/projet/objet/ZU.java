@@ -5,28 +5,29 @@
  */
 package org.centrale.projet.objet;
 
+import java.text.DecimalFormat;
 /**
  *
  * @author clair
  */
 public class ZU extends ZAU {
 
+    private static DecimalFormat df = new DecimalFormat("0.00");
     private float surfaceConstruite;
 
     ZU(){
-        setNumero(0);
-        setProprietaire(new String());
-        setForme(new Polygone());
-        setpConstructible(0);
+        super();
         surfaceConstruite = 0;
     }
     
-    ZU(Parcelle p, int pConst, float surfConstruite){
-        setNumero(p.getNumero());
-        setProprietaire(p.getProprietaire());
-        setForme(p.getForme());
-        setpConstructible(pConst);
+    ZU(int num, String proprio, Polygone f, int pConst, float surfConstruite){
+        super(num,proprio,f,pConst);
         surfaceConstruite = surfConstruite;
+    }
+    
+    ZU(ZU p){
+        super(p);
+        surfaceConstruite = p.getSurfaceConstruite();
     }
     
     public float getSurfaceConstruite() {
@@ -43,8 +44,8 @@ public class ZU extends ZAU {
 
     public String toString() {
         String s = super.toString();
-        s += "  Surface construite : " + surfaceConstruite + "\n";
-        s += "  Surface constructible restante : " + surfaceConstructible() + "\n";
+        s += "  Surface construite : " + df.format(surfaceConstruite) + "\n";
+        s += "  Surface constructible restante : " + df.format(surfaceConstructible()) + "\n";
         return s;
     }
 }

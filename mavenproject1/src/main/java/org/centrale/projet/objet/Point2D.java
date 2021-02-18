@@ -10,55 +10,56 @@ package org.centrale.projet.objet;
  * @author clair
  */
 public class Point2D {
+
     private int x;
     private int y;
-    
-    Point2D(){
+
+    Point2D() {
         x = 0;
         y = 0;
     }
-    
-    Point2D(int a, int b){
+
+    Point2D(int a, int b) {
         x = a;
         y = b;
     }
-    
-    Point2D(Point2D p){
+
+    Point2D(Point2D p) {
         x = p.getX();
         y = p.getY();
     }
-    
-    public int getX(){
+
+    public int getX() {
         return x;
     }
-    
-    public int getY(){
+
+    public int getY() {
         return y;
     }
-    
-    public void setX(int a){
+
+    public void setX(int a) {
         x = a;
     }
-    
-    public void setY(int b){
+
+    public void setY(int b) {
         x = b;
     }
-    
-    public void setPosition(int a, int b){
+
+    public void setPosition(int a, int b) {
         x = a;
         y = b;
     }
-    
-    public void translate(int a, int b){
+
+    public void translate(int a, int b) {
         x += a;
         y += b;
     }
-    
-    public String toString(){
-        return("["+x+","+y+"]");
+
+    public String toString() {
+        return ("[" + x + "," + y + "]");
     }
-    
-    public void affiche(){
+
+    public void affiche() {
         System.out.println(toString());
     }
 

@@ -6,6 +6,7 @@
 package org.centrale.projet.objet;
 
 import java.text.DecimalFormat;
+
 /**
  *
  * @author clair
@@ -15,21 +16,21 @@ public class ZU extends ZAU {
     private static DecimalFormat df = new DecimalFormat("0.00");
     private float surfaceConstruite;
 
-    ZU(){
+    ZU() {
         super();
         surfaceConstruite = 0;
     }
-    
-    ZU(int num, String proprio, Polygone f, int pConst, float surfConstruite){
-        super(num,proprio,f,pConst);
+
+    ZU(int num, String proprio, Polygone f, int pConst, float surfConstruite) {
+        super(num, proprio, f, pConst);
         surfaceConstruite = surfConstruite;
     }
-    
-    ZU(ZU p){
+
+    ZU(ZU p) {
         super(p);
         surfaceConstruite = p.getSurfaceConstruite();
     }
-    
+
     public float getSurfaceConstruite() {
         return surfaceConstruite;
     }

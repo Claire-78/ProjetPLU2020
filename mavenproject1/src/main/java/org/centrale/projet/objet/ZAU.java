@@ -13,21 +13,21 @@ public class ZAU extends Parcelle {
 
     private int pConstructible;
 
-    public ZAU(){
+    public ZAU() {
         super();
         pConstructible = 0;
     }
-    
-    ZAU(int num, String proprio, Polygone f,int pConst){
-        super(num,proprio,f);
+
+    ZAU(int num, String proprio, Polygone f, int pConst) {
+        super(num, proprio, f);
         pConstructible = pConst;
     }
-    
-    ZAU(ZAU p){
+
+    ZAU(ZAU p) {
         super(p);
         pConstructible = p.getpConstructible();
     }
-    
+
     public int getpConstructible() {
         return pConstructible;
     }
@@ -37,7 +37,7 @@ public class ZAU extends Parcelle {
     }
 
     public float surfaceConstructible() {
-        return ((float) pConstructible * this.getSurface()/100f);
+        return ((float) pConstructible * this.getSurface() / 100f);
     }
 
     @Override

@@ -13,21 +13,21 @@ public class ZA extends ZN {
 
     private String culture;
 
-    ZA(){
+    ZA() {
         super();
         culture = new String();
     }
-        
-    ZA(int num, String proprio, Polygone f, String cult){
-        super(num,proprio,f);
+
+    ZA(int num, String proprio, Polygone f, String cult) {
+        super(num, proprio, f);
         culture = cult;
     }
-    
-    ZA(ZA p){
+
+    ZA(ZA p) {
         super(p);
         culture = p.getCulture();
     }
-    
+
     public String getCulture() {
         return culture;
     }

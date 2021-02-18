@@ -10,20 +10,20 @@ package org.centrale.projet.objet;
  * @author clair
  */
 public class ZN extends Parcelle {
-    
-    ZN(){
+
+    ZN() {
         super();
     }
-    
+
     ZN(int num, String proprio, Polygone f) {
-        super(num,proprio,f);
+        super(num, proprio, f);
     }
-    
-    ZN(ZN p){
+
+    ZN(ZN p) {
         super(p);
     }
-    
-    public String toString(){
+
+    public String toString() {
         return super.toString();
     }
 }

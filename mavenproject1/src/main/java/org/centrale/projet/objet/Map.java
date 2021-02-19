@@ -57,11 +57,26 @@ public class Map {
         }
 
         //Formes
-        parcelles[0].setForme(poly1);
-        parcelles[1].setForme(poly2);
-        parcelles[2].setForme(poly3);
-        parcelles[3].setForme(poly4);
-
+        try {
+            parcelles[0].setForme(poly1);
+        } catch (NullAreaException | NegativeAreaException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            parcelles[1].setForme(poly2);
+        } catch (NullAreaException | NegativeAreaException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            parcelles[2].setForme(poly3);
+        } catch (NullAreaException | NegativeAreaException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            parcelles[3].setForme(poly4);
+        } catch (NullAreaException | NegativeAreaException e) {
+            System.out.println(e.getMessage());
+        }
         //Différentiation des types
         //ZAU
         num = generateur.nextInt(100);

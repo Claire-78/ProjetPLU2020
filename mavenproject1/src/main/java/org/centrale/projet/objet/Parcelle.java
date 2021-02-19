@@ -65,9 +65,16 @@ public class Parcelle {
         proprietaire = proprio;
     }
 
-    public void setForme(Polygone poly) {
-        forme = poly;
-        surface = forme.getSurface();
+    public void setForme(Polygone poly) throws NullAreaException, NegativeAreaException {
+        if (poly.getSurface() == 0) {
+            throw new NullAreaException("Forme à surface nulle non assignée à la parcelle n°" + getNumero() +".");
+        } else {
+            if (poly.getSurface() < 0) {
+                throw new NegativeAreaException("Forme à surface négative non assignée à la parcelle n°" + getNumero() +".");
+            }
+            forme = poly;
+            surface = forme.getSurface();
+        }
     }
 
     public String toString() {

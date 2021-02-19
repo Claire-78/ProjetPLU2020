@@ -36,13 +36,16 @@ public class ZA extends ZN implements Constructible{
         culture = cult;
     }
 
+    @Override
     public float surfaceConstructible() {
-        return (Math.max(200f,getSurface()*0.1f));
+        return (Math.min(200f,getSurface()*0.1f));
     }
     
+    @Override
     public String toString() {
         String s = super.toString();
         s += "  Type de culture : " + culture + "\n";
+        s += "  Surface constructible : " + surfaceConstructible() + "m²\n";
         return s;
     }
 }

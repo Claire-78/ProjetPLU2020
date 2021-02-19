@@ -5,12 +5,14 @@
  */
 package org.centrale.projet.objet;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author clair
  */
 public class ZAU extends Parcelle implements Constructible{
-
+    private static DecimalFormat df = new DecimalFormat("0.00");
     private int pConstructible;
 
     public ZAU() {
@@ -44,6 +46,7 @@ public class ZAU extends Parcelle implements Constructible{
     public String toString() {
         var s = super.toString();
         s += "  % constructible : " + pConstructible + "%\n";
+        s += "  Surface constructible : " + df.format(surfaceConstructible()) + "m²\n";
         return s;
     }
 }

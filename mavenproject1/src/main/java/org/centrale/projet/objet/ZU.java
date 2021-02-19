@@ -46,7 +46,6 @@ public class ZU extends ZAU {
     public String toString() {
         String s = super.toString();
         s += "  Surface construite : " + df.format(surfaceConstruite) + "m²\n";
-        s += "  Surface constructible restante : " + df.format(surfaceConstructible()) + "m²\n";
         return s;
     }
 }

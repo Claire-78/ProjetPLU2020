@@ -9,7 +9,7 @@ package org.centrale.projet.objet;
  *
  * @author clair
  */
-public class ZAU extends Parcelle {
+public class ZAU extends Parcelle implements Constructible{
 
     private int pConstructible;
 

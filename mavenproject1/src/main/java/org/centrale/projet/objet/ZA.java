@@ -9,7 +9,7 @@ package org.centrale.projet.objet;
  *
  * @author clair
  */
-public class ZA extends ZN {
+public class ZA extends ZN implements Constructible{
 
     private String culture;
 
@@ -36,6 +36,10 @@ public class ZA extends ZN {
         culture = cult;
     }
 
+    public float surfaceConstructible() {
+        return (Math.max(200f,getSurface()*0.1f));
+    }
+    
     public String toString() {
         String s = super.toString();
         s += "  Type de culture : " + culture + "\n";

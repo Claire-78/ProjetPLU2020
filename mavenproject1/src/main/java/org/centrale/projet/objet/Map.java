@@ -5,7 +5,6 @@
  */
 package org.centrale.projet.objet;
 
-import java.util.Random;
 import java.util.*;
 import java.io.*;
 

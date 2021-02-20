@@ -14,7 +14,7 @@ public class PLU {
     
     public static void main(String[] args) {
         //Creation de la Map
-        Map map = new Map("source.txt");
+        Map map = new Map("Parcelles.txt");
         
         
         //Affichage

@@ -14,10 +14,13 @@ public class PLU {
     
     public static void main(String[] args) {
         //Creation de la Map
-        Map map = new Map("Parcelles.txt");
+        Map map = new Map("source.txt");
         
         
         //Affichage
         map.affiche();
+        
+        //Sauvegarde
+        map.sauvegarde("source.txt");
     }
 }

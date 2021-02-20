@@ -18,7 +18,7 @@ public class Map {
     LinkedList<Parcelle> parcelles;
 
     Map() {
-        parcelles = new LinkedList();
+        parcelles = new LinkedList<Parcelle>();
     }
 
     Map(LinkedList<Parcelle> listeParcelles){
@@ -26,7 +26,7 @@ public class Map {
     }
     
     Map(String fileName) {
-        parcelles = new LinkedList();
+        parcelles = new LinkedList<Parcelle>();
         String ligne1;
         String ligne2;
         try {
@@ -101,5 +101,54 @@ public class Map {
 
     public void affiche() {
         System.out.println(toString());
+    }
+    
+    public void sauvegarde(String fileName){
+        BufferedWriter writer = null;
+        try{
+            writer = new BufferedWriter(new FileWriter(fileName));
+            //Ecrire toutes les parcelles
+            for (Parcelle p : parcelles){
+                String ligne1 = new String();
+                String ligne2 = new String();
+                ligne1 += p.getType() + " " + p.getNumero() + " " + p.getProprietaire();
+                switch (p.getType()){
+                    case "ZAU" :
+                        ligne1 += " " + ((ZAU) p).getpConstructible();
+                        break;
+                    case "ZU" :
+                        ligne1 += " " + ((ZU) p).getpConstructible()+ " " +((ZU) p).getSurfaceConstruite();
+                        break;
+                    case "ZA":
+                        ligne1 += " " + ((ZA) p).getCulture();
+                        break;
+                     
+                }
+                for(Point2D point : p.getForme().getSommets()){
+                    ligne2 += point +" ";
+                }
+                writer.write(ligne1);
+                writer.newLine();
+                writer.write(ligne2);
+                writer.newLine();
+            }
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        finally{
+            try{
+                if (writer != null){
+                    writer.flush();
+                    writer.close();
+                }
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 }

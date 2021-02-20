@@ -56,7 +56,7 @@ public class Point2D {
     }
 
     public String toString() {
-        return ("[" + x + "," + y + "]");
+        return ("[" + x + ";" + y + "]");
     }
 
     public void affiche() {

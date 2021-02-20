@@ -16,7 +16,7 @@ public class Polygone {
     private List<Point2D> sommets;
 
     Polygone() {
-        sommets = new ArrayList();
+        sommets = new ArrayList<Point2D>();
     }
 
     Polygone(List<Point2D> points) {
@@ -24,7 +24,7 @@ public class Polygone {
     }
 
     Polygone(Polygone p) {
-        sommets = new ArrayList<>();
+        sommets = new ArrayList<Point2D>();
         for (Point2D point : p.getSommets()) {
             sommets.add(new Point2D(point));
         }
@@ -61,13 +61,12 @@ public class Polygone {
         return (surface / 2.0f);
     }
 
+    @Override
     public String toString() {
         String affichage = new String();
         affichage += "Polygone à " + sommets.size() + " points : ";
 
-        for (Point2D sommet : sommets) {
-            affichage += sommet.toString() + " ";
-        }
+        affichage = sommets.stream().map(sommet -> sommet.toString() + " ").reduce(affichage, String::concat);
         return affichage;
     }
 

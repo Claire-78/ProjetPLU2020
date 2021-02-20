@@ -15,7 +15,7 @@ public class TestPolygone {
 
     public static void main(String[] args) {
         //Création des points
-        List<Point2D> liste = new ArrayList();
+        List<Point2D> liste = new ArrayList<Point2D>();
         Point2D p1 = new Point2D();
         liste.add(p1);
         liste.add(new Point2D(1, 0));

@@ -35,7 +35,7 @@ public class ZU extends ZAU {
         return surfaceConstruite;
     }
 
-    public void setSurfaceConstruite(float s) {
+    public void setSurfaceConstruite(int s) {
         surfaceConstruite = s;
     }
 

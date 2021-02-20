@@ -6,6 +6,8 @@
 package org.centrale.projet.objet;
 
 import java.util.Random;
+import java.util.*;
+import java.io.*;
 
 /**
  *
@@ -13,124 +15,86 @@ import java.util.Random;
  */
 public class Map {
 
-    Parcelle[] parcelles;
+    LinkedList<Parcelle> parcelles;
 
     Map() {
-        parcelles = new Parcelle[4];
+        parcelles = new LinkedList();
     }
 
-    public void creeMapAlea(Polygone poly1, Polygone poly2, Polygone poly3, Polygone poly4) {
-        Random generateur = new Random();
-        parcelles[0] = new ZAU();
-        parcelles[1] = new ZU();
-        parcelles[2] = new ZN();
-        parcelles[3] = new ZA();
-
-        //Numeros
-        int num;
-        num = generateur.nextInt(100);
-        parcelles[0].setNumero(num);
-
-        while (num == parcelles[0].getNumero()) {
-            num = generateur.nextInt(100);
-        }
-        parcelles[1].setNumero(num);
-
-        while ((num == parcelles[0].getNumero()) || (num == parcelles[1].getNumero())) {
-            num = generateur.nextInt(100);
-        }
-        parcelles[2].setNumero(num);
-
-        while ((num == parcelles[0].getNumero()) || (num == parcelles[1].getNumero()) || (num == parcelles[2].getNumero())) {
-            num = generateur.nextInt(100);
-        }
-        parcelles[3].setNumero(num);
-
-        //Propriétaires
-        String nom;
-        for (int i = 0; i < 4; i++) {
-            nom = "";
-            for (int j = 0; j < 6; j++) {
-                nom += (char) (generateur.nextInt(26) + 97);
+    Map(LinkedList<Parcelle> listeParcelles){
+        parcelles = listeParcelles;
+    }
+    
+    Map(String fileName) {
+        parcelles = new LinkedList();
+        String ligne1;
+        String ligne2;
+        try {
+            BufferedReader fichier = new BufferedReader(new FileReader(fileName));
+            ligne1 = fichier.readLine();
+            ligne2 = fichier.readLine();
+            while (ligne1 != null) {
+                Parcelle parcelle = creerParcelle(ligne1, ligne2);
+                parcelles.add(parcelle);
+                ligne1 = fichier.readLine();
+                ligne2 = fichier.readLine();
             }
-            parcelles[i].setProprietaire(nom);
+            fichier.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        //Formes
-        try {
-            parcelles[0].setForme(poly1);
-        } catch (NullAreaException | NegativeAreaException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            parcelles[1].setForme(poly2);
-        } catch (NullAreaException | NegativeAreaException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            parcelles[2].setForme(poly3);
-        } catch (NullAreaException | NegativeAreaException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            parcelles[3].setForme(poly4);
-        } catch (NullAreaException | NegativeAreaException e) {
-            System.out.println(e.getMessage());
-        }
-        //Différentiation des types
-        //ZAU
-        num = generateur.nextInt(100);
-        ((ZAU) parcelles[0]).setpConstructible(num);
-
-        //ZU
-        num = generateur.nextInt(100);
-        ((ZU) parcelles[1]).setpConstructible(num);
-        /*
-        int surfaceConstruct = (int) (((ZU) parcelles[1]).surfaceConstructible());
-        System.out.println(surfaceConstruct+"\n");
-        if (surfaceConstruct > 0) {
-            num = generateur.nextInt(surfaceConstruct);
-            ((ZU) parcelles[1]).setSurfaceConstruite(num);
-        } else {
-            ((ZU) parcelles[1]).setSurfaceConstruite(0);
-        }*/
-        float surfaceConstruct = ((ZU) parcelles[1]).surfaceConstructible();
-        if (surfaceConstruct > 0) {
-            num = generateur.nextInt((int) (surfaceConstruct * 100f));
-            ((ZU) parcelles[1]).setSurfaceConstruite((float) num / 100f);
-        } else {
-            ((ZU) parcelles[1]).setSurfaceConstruite(0);
-        }
-
-        //ZN : rien à faire de plus
-        //ZA
-        String culture = "";
-        for (int j = 0; j < 6; j++) {
-            culture += (char) (generateur.nextInt(26) + 97);
-        }
-        ((ZA) parcelles[3]).setCulture(culture);
     }
-
-    public float getSurface() {
+    
+    public Parcelle creerParcelle(String chaine, String sommets){
+        Parcelle result;
+        Polygone f = new Polygone();
+        String[] chaineSplit = chaine.split(" ");
+        String[] sommetsSplit = sommets.split(" ");
+        //Remplir f
+        for (String point : sommetsSplit){
+            point = point.substring(1, point.length()-1);
+            String[] valeurs = point.split(";");
+            f.addPoint(new Point2D(Integer.parseInt(valeurs[0]), Integer.parseInt(valeurs[1])));
+        }
+        
+        try{
+           switch(chaineSplit[0]){
+               case "ZU" :
+                   result = new ZU(Integer.parseInt(chaineSplit[1]) , chaineSplit[2],f,Integer.parseInt(chaineSplit[3]),Float.parseFloat(chaineSplit[4]));
+                   break;
+               case "ZAU" :
+                   result = new ZAU(Integer.parseInt(chaineSplit[1]) , chaineSplit[2],f,Integer.parseInt(chaineSplit[3]));
+                   break;
+               case "ZN" :
+                   result = new ZN(Integer.parseInt(chaineSplit[1]) , chaineSplit[2],f);
+                   break;
+               case "ZA":
+                   result= new ZA(Integer.parseInt(chaineSplit[1]) , chaineSplit[2],f, chaineSplit[3]);
+                   break;
+               default:
+                   result = new Parcelle();
+                   break;
+           } 
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Array is out of Bounds"+e);
+            return null;
+        }
+        return result;
+    }
+  
+    public float calculSurface() {
         float total = 0;
-        for (int i = 0; i < 4; i++) {
-            total += parcelles[i].getSurface();
+        for (Parcelle p : parcelles) {
+            total += p.getSurface();
         }
         return total;
     }
 
-    /*
-    public float getSurfaceConstructible(){
-        float total = 0;
-        for (int i = 0;i<4;i++){
-            total += parcelles[i].surfaceConstructible();
-        }
-        return total;
-    }*/
     public String toString() {
         String total = "";
-        for (int i = 0; i < 4; i++) {
-            total += parcelles[i] + "\n";
+        for (Parcelle p : parcelles) {
+            total += p + "\n";
         }
         return total;
     }

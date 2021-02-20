@@ -39,7 +39,7 @@ public class ZAU extends Parcelle implements Constructible{
     }
 
     public float surfaceConstructible() {
-        return ((float) pConstructible * this.getSurface() / 100f);
+        return (pConstructible * this.getSurface() / 100f);
     }
 
     @Override
